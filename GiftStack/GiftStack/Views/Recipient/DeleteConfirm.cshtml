@@ -1,0 +1,15 @@
+﻿@model GiftStack.Models.RecipientDto
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete @Model.RecipientName?</h2>
+
+<a href="/recipient/List">Cancel</a>
+
+<h2>@Model.RecipientName</h2>
+
+<form action="/recipient/delete/@Model.RecipientId" method="post">
+    <input type="submit" value="Confirm Delete" />
+</form>

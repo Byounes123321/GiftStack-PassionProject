@@ -1,0 +1,12 @@
+﻿@model IEnumerable<GiftStack.Models.EventDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<h3><a href="/event/new">Add new event</a></h3>
+@foreach (var Event in Model)
+{
+    <h2><a href="/event/details/@Event.EventId">@Event.EventName</a></h2>
+    <div>ID: @Event.EventId</div>
+}

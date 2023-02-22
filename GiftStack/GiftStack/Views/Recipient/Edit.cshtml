@@ -1,0 +1,22 @@
+﻿@model GiftStack.Models.ViewModels.UpdateRecipient
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>
+    Update @Model.SelectedRecipient.RecipientName
+</h2>
+
+<form action="/Recipient/update/@Model.SelectedRecipient.RecipientId" method="post">
+    <div style="display:none;">
+        <input type="number" name="RecipientId" value="@Model.SelectedRecipient.RecipientId" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="RecipientName" value="@Model.SelectedRecipient.RecipientName" />
+    </div>
+    <div>
+        <input type="submit" value="Update Recipient" />
+
+    </div>
+</form>

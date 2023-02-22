@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "new";
+}
+
+<h2>Create Event</h2>
+<form action="/event/create" method="post">
+    <div>
+        <label>Name: </label> <input type="text" name="EventName" />
+    </div>
+    <div>
+        <label>Date: </label> <input type="date" name="EventDate" />
+    </div>
+    <div>
+        <label>Colour: </label> <input type="color" name="EventColor" />
+    </div>
+    <div>
+        <input type="submit" value="Add Event" />
+    </div>
+</form>
+

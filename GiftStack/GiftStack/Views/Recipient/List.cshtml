@@ -1,0 +1,12 @@
+﻿@model IEnumerable<GiftStack.Models.RecipientDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<h3><a href="/recipient/new">Add new recipient</a></h3>
+@foreach (var recipient in Model)
+{
+    <h2><a href="/recipient/details/@recipient.RecipientId">@recipient.RecipientName</a></h2>
+    <div>ID: @recipient.RecipientId</div>
+}

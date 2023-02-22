@@ -1,0 +1,14 @@
+﻿@model IEnumerable<GiftStack.Models.giftDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<h3><a href="/gift/new">Add new gift</a></h3>
+@foreach (var gift in Model)
+{
+    <h2><a href="/gift/details/@gift.GiftId">@gift.GiftName</a></h2>
+    <div>From: @gift.GiftLocation</div>
+    <div>To: @gift.RecipientName</div>
+    <div>ID: @gift.GiftId</div>
+}

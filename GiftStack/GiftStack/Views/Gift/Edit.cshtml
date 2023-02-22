@@ -1,0 +1,49 @@
+﻿@model GiftStack.Models.ViewModels.UpdateGift 
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>
+    Update @Model.SelectedGift.GiftName
+</h2> 
+
+<form action="/gift/update/@Model.SelectedGift.GiftId" method="post">
+    <div style="display:none;">
+        <input type="number" name="GiftId" value="@Model.SelectedGift.GiftId" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="giftName" value="@Model.SelectedGift.GiftName" />
+    </div>
+    <div>
+        <label>Location:</label> <input type="text" name="giftLocation" value="@Model.SelectedGift.GiftLocation" />
+    </div>
+    <div>
+        <label>Is Gift Purchaced?:</label> <input type="checkbox" name="IsGiftPurchaced" value="@Model.SelectedGift.IsGiftPurchaced" />
+    </div>
+    <div>
+        <label>Whos it for : </label>
+        <select name="RecipientId" id="RecipientId">
+
+            @foreach (var Recipient in Model.Recipient)
+            {
+                <option value="@Recipient.RecipientId">@Recipient.RecipientName.</option>
+            }
+
+        </select>
+
+    </div>
+    <div>
+        <label>what event is it for : </label>
+        <select name="EventId" id="EventId">
+            @foreach (var Event in Model.Event)
+            {
+                <option value="@Event.EventId">@Event.EventName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Update gift" />
+
+    </div>
+</form>

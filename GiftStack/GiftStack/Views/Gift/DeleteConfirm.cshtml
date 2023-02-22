@@ -1,0 +1,17 @@
+﻿@model GiftStack.Models.giftDto
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this Gift?</h2>
+
+<a href="/gift/List">Cancel</a>
+
+<h2>@Model.GiftName</h2>
+<div>From:  @Model.GiftLocation </div>
+<div>Bought?: @Model.IsGiftPurchaced</div>
+
+<form action="/gift/delete/@Model.GiftId" method="post">
+    <input type="submit" value="Confirm Delete" />
+</form>

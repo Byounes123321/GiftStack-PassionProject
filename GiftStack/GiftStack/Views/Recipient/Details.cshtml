@@ -1,0 +1,27 @@
+﻿@model GiftStack.Models.ViewModels.DetailsRecipient
+@{
+    ViewBag.Title = "View";
+}
+<a href="/recipient/list">Back to list</a>
+<a href="/recipient/deleteConfirm/@Model.SelectedRecipient.RecipientId">delete</a>
+<a href="/recipient/edit/@Model.SelectedRecipient.RecipientId">Edit</a>
+
+
+
+<h3>Name: @Model.SelectedRecipient.RecipientName</h3>
+
+<div>ID: @Model.SelectedRecipient.RecipientId</div>
+<div>
+    <ul>
+    gifts for @Model.SelectedRecipient.RecipientName
+    @foreach(var gift in Model.GiftsRecived)
+            {
+                <li>
+                    <a href="/gift/details/@gift.GiftId">@gift.GiftName</a> for @gift.EventName
+                </li>
+            }
+        </ul>
+</div>
+
+
+

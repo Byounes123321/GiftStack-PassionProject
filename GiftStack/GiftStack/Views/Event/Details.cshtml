@@ -1,0 +1,26 @@
+﻿@model GiftStack.Models.ViewModels.DetailsEvent 
+@{
+    ViewBag.Title = "View"; 
+}
+<a href="/event/list">Back to list</a>
+<a href="/event/deleteConfirm/@Model.SelectedEvent.EventId">delete</a>
+<a href="/event/edit/@Model.SelectedEvent.EventId">Edit</a>
+
+
+
+<h3>Name: @Model.SelectedEvent.EventName</h3>
+
+<div>ID: @Model.SelectedEvent.EventId</div>
+<div>Date: @Model.SelectedEvent.EventDate</div>
+<div style="background-color: @Model.SelectedEvent.EventColor">Color</div>
+
+<div>
+    Gifts related to @Model.SelectedEvent.EventName:
+        @foreach (var gift in Model.RelatedGifts)
+            {
+                <a href="/gift/details/@gift.GiftId">@gift.GiftName for @gift.RecipientName</a>
+            }
+</div>
+
+
+

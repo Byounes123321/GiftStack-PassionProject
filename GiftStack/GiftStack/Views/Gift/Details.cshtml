@@ -1,0 +1,32 @@
+﻿@model GiftStack.Models.ViewModels.DetailsGift
+@{
+    ViewBag.Title = "View";
+}
+<a href="/gift/list">Back to list</a>
+<a href="/gift/deleteConfirm/@Model.SelectedGift.GiftId">delete</a>
+<a href="/gift/edit/@Model.SelectedGift.GiftId">Edit</a>
+<h3>@Model.SelectedGift.GiftName</h3> 
+<div>
+    @if (System.Uri.IsWellFormedUriString(Model.SelectedGift.GiftLocation, UriKind.Absolute))
+    {
+        <a href="@Model.SelectedGift.GiftLocation" target="_blank">View Gift</a>
+    }
+    else
+    {
+        @Model.SelectedGift.GiftLocation
+    }
+
+</div>
+<div>
+    @foreach (var rec in Model.RelatedRecipient)
+    {
+        <a href="/recipient/details/@rec.RecipientId">@rec.RecipientName</a>
+    }
+</div>
+<div>
+    @foreach (var eve in Model.RelatedEvent)
+    {
+        <a href="/event/details/@eve.EventId" style="color:@eve.EventColor">@eve.EventName</a>
+    }
+</div>
+

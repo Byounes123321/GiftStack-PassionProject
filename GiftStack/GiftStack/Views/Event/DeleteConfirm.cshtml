@@ -1,0 +1,15 @@
+﻿@model GiftStack.Models.EventDto
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete @Model.EventName?</h2>
+
+<a href="/event/List">Cancel</a>
+
+<h2>@Model.EventName</h2>
+
+<form action="/event/delete/@Model.EventId" method="post">
+    <input type="submit" value="Confirm Delete" />
+</form>

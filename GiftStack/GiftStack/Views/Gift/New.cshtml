@@ -1,0 +1,44 @@
+﻿@model  GiftStack.Models.ViewModels.NewGift
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Gift</h2>
+<form action="/gift/create" method="post">
+    <div>
+        <label>Name: </label> <input type="text" name="GiftName" />
+    </div>
+    <div>
+        <label>Location: </label> <input type="text" name="GiftLocation" />
+    </div>
+    <div>
+        <label>Is Gift Purchaced? : </label> <input type="checkbox" name="IsGiftPurchaced" />
+    </div>
+    <div>
+    </div>
+    <div>
+        <label>Whos it for : </label>
+        <select name="RecipientId" id="RecipientId">
+
+            @foreach (var Recipient in Model.Recipients)
+            {
+                <option value="@Recipient.RecipientId">@Recipient.RecipientName.</option>
+            }
+
+        </select>
+
+    </div>
+    <div>
+        <label>what event is it for : </label>
+        <select name="EventId" id="EventId">
+            @foreach (var Event in Model.Events)
+            {
+                <option value="@Event.EventId">@Event.EventName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Add Gift" />
+    </div>
+</form>
+
