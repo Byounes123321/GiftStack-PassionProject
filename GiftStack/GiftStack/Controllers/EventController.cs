@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Security;
@@ -66,7 +67,8 @@ namespace GiftStack.Controllers
             Debug.WriteLine(SelectedEvent.EventName);
 
             ViewModel.SelectedEvent = SelectedEvent;
-
+            
+            //Set secconed api call to get the list of gifts for the selected event and do same process to retrive data
             HttpClient client2 = new HttpClient();
             client2.BaseAddress = new Uri("https://localhost:44367/api/GiftData/");
 
@@ -100,7 +102,6 @@ namespace GiftStack.Controllers
             Debug.WriteLine(Event.EventName);
             // add a new event into the system using the api
             string url = "AddEvent";
-
             string jsonPayload = jss.Serialize(Event);
 
             Debug.WriteLine("the Json payload is: ");
@@ -140,14 +141,14 @@ namespace GiftStack.Controllers
         [HttpPost]
         public ActionResult Update(int id, Event Event)
         {
-            // EVENTID AND RECIPANTID ARE HARD CODED THE GIFT ID IS 5
-            //ADD UPDATE FUCTIONALITYS
+            //update an event in the system using the api
+
             string url = "updateEvent/" + id;
             string jsonpayload = jss.Serialize(Event);
             Debug.WriteLine("Jason Data: ");
             Debug.WriteLine(jsonpayload);
 
-
+          
 
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -167,7 +168,7 @@ namespace GiftStack.Controllers
         // GET: RecipientData/Delete/5
         public ActionResult DeleteConfirm(int id)
         {
-
+            //communicate with our event data api to retrive one event
             string url = "findevent/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             EventDto SelectedEvent = response.Content.ReadAsAsync<EventDto>().Result;
@@ -179,6 +180,7 @@ namespace GiftStack.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
+            //delete an event in the system using the api
             string url = "deleteEvent/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";

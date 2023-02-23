@@ -2,13 +2,58 @@
 @{
     ViewBag.Title = "List";
 }
-
-<h2>List</h2>
-<h3><a href="/gift/new">Add new gift</a></h3>
-@foreach (var gift in Model)
-{
-    <h2><a href="/gift/details/@gift.GiftId">@gift.GiftName</a></h2>
-    <div>From: @gift.GiftLocation</div>
-    <div>To: @gift.RecipientName</div>
-    <div>ID: @gift.GiftId</div>
-}
+<head>
+    <style>
+        a:link{
+            text-decoration:none;
+        }
+        a:active {
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        a:visited {
+            text-decoration: none;
+        }
+        h2 {
+            font-size: 36px; 
+            text-align: center;
+        }
+        .add-btn {
+            font-size: 18px;
+            text-align: center;
+        }
+        .add-btn :hover{ 
+            padding:7px;
+        }
+        .add-a {
+            padding: 5px;
+            background-color: blue;
+            color: black;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        .list-ctn {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .li {
+            color: purple;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Your Gifts</h2>
+    <p class="add-btn">
+    <a href="/gift/new" class="add-a">&plus; Add New Gift</a></p>
+ 
+    @foreach (var gift in Model)
+    {
+        <div class="list-ctn">
+            <h3 class="li"><a href="/gift/details/@gift.GiftId">@gift.GiftName</a></h3>
+        </div>
+    }
+</body>

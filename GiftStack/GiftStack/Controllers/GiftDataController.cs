@@ -17,6 +17,12 @@ namespace GiftStack.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        /// <summary>
+        /// gets the list of all gifts from the database
+        /// </summary>
+        /// <returns>
+        /// A list of all gifts from the database 
+        /// </returns>
         // GET: api/GiftData/ListGifts
         [HttpGet]
         public IEnumerable<giftDto> ListGifts()
@@ -37,15 +43,15 @@ namespace GiftStack.Controllers
             return giftDtos;
         }
         /// <summary>
-        /// Gathers information about all animals related to a particular species ID
+        /// Gathers information about all gifts related to a specific recipient ID
         /// </summary>
         /// <returns>
         /// HEADER: 200 (OK)
-        /// CONTENT: all animals in the database, including their associated species matched with a particular species ID
+        /// CONTENT: all gifts in the database, including their associated event that is linked to the recipient id
         /// </returns>
-        /// <param name="id">Species ID.</param>
+        /// <param name="id">recipeint ID.</param>
         /// <example>
-        /// GET: api/AnimalData/ListAnimalsForSpecies/3
+        /// GET: api/GiftData/ListGiftsForRecipient/3
         /// </example>
         [HttpGet]
         [ResponseType(typeof(giftDto))]
@@ -66,7 +72,13 @@ namespace GiftStack.Controllers
 
             return Ok(giftDtos);
         }
-
+        /// <summary>
+        /// Finds a specific gift in the database by its id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// One gift that matches the id that it was passed
+        /// </returns>
         // GET: api/GiftData/FindGift/5
         [ResponseType(typeof(Gift))]
         [HttpGet]
@@ -91,15 +103,15 @@ namespace GiftStack.Controllers
             return Ok(giftDto);
         }
         /// <summary>
-        /// Gathers information about all animals related to a particular species ID
+        /// Gathers information about all gifts related to a particular event ID
         /// </summary>
         /// <returns>
         /// HEADER: 200 (OK)
-        /// CONTENT: all animals in the database, including their associated species matched with a particular species ID
+        /// CONTENT: all gifts in the database, including their associated recipient matched with a particular event ID
         /// </returns>
         /// <param name="id">Species ID.</param>
         /// <example>
-        /// GET: api/AnimalData/ListAnimalsForSpecies/3
+        /// GET: api/GiftData/ListGiftsForEvent/3
         /// </example>
         [HttpGet]
         [ResponseType(typeof(giftDto))]
@@ -119,7 +131,15 @@ namespace GiftStack.Controllers
 
             return Ok(giftDtos);
         }
-
+        /// <summary>
+        /// Updates one gift in the database with data provided in a post form
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="gift"></param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
         // POST: api/GiftData/UpdateGift/5
         [ResponseType(typeof(void))]
         [HttpPost]
@@ -163,7 +183,13 @@ namespace GiftStack.Controllers
             Debug.WriteLine("none of the conditions triggerd");
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+            /// <summary>
+            /// Adds a gift to the database using post data
+            /// </summary>
+            /// <param name="gift"></param>
+            /// <returns>
+            /// HEADER: 200 (OK)
+            /// </returns>
             // POST: api/GiftData/AddGift
             [ResponseType(typeof(Gift))]
             [HttpPost]
@@ -180,6 +206,13 @@ namespace GiftStack.Controllers
                 return CreatedAtRoute("DefaultApi", new { id = gift.GiftId }, gift);
             }
 
+        /// <summary>
+        /// Deletes a gift in the database with a matching id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// </returns>
         // POST: api/GiftData/DeleteGift/5
         [ResponseType(typeof(Gift))]
         [HttpPost]

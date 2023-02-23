@@ -12,7 +12,7 @@
         <label>Location: </label> <input type="text" name="GiftLocation" />
     </div>
     <div>
-        <label>Is Gift Purchaced? : </label> <input type="checkbox" name="IsGiftPurchaced" />
+        <label>Is Gift Purchaced?: </label> <input type="checkbox" name="IsGiftPurchaced" value="True" />
     </div>
     <div>
     </div>
@@ -22,7 +22,7 @@
 
             @foreach (var Recipient in Model.Recipients)
             {
-                <option value="@Recipient.RecipientId">@Recipient.RecipientName.</option>
+                <option value="@Recipient.RecipientId">@Recipient.RecipientName</option>
             }
 
         </select>

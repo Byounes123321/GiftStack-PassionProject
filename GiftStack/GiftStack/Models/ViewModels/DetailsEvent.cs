@@ -9,7 +9,8 @@ namespace GiftStack.Models.ViewModels
     {
         // Items i want to be displayed
         public EventDto SelectedEvent { get; set; }
-        // Items i want to be refranced
+
+        // Items i want to be referenced
         public IEnumerable<giftDto> RelatedGifts { get; set; }
     }
 }

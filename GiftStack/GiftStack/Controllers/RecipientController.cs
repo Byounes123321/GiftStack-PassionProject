@@ -63,8 +63,10 @@ namespace GiftStack.Controllers
             ViewModel.SelectedRecipient = SelectedRecipient;
 
             //show all gifts that the recipient is reciving
+
             HttpClient client2 = new HttpClient();
             client2.BaseAddress = new Uri("https://localhost:44367/api/giftdata/");
+            
             string url2 = "ListGiftsForRecipient/" + id;
             HttpResponseMessage response2 = client2.GetAsync(url2).Result;
             IEnumerable<giftDto> GiftsRecived = response2.Content.ReadAsAsync<IEnumerable<giftDto>>().Result;
@@ -128,9 +130,7 @@ namespace GiftStack.Controllers
         // POST: gift/update/5
         [HttpPost]
         public ActionResult Update(int id, Recipient recipient)
-        {
-            // EVENTID AND RECIPANTID ARE HARD CODED THE GIFT ID IS 5
-            //ADD UPDATE FUCTIONALITYS
+        {        
             string url = "updateRecipient/" + id;
             string jsonpayload = jss.Serialize(recipient);
             Debug.WriteLine("Jason Data: ");

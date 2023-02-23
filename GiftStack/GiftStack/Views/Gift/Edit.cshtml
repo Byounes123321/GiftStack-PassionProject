@@ -18,9 +18,18 @@
     <div>
         <label>Location:</label> <input type="text" name="giftLocation" value="@Model.SelectedGift.GiftLocation" />
     </div>
+    @if (Model.SelectedGift.IsGiftPurchaced)
+    {
+        <div>
+            <label>Is Gift Purchaced?:</label> <input type="checkbox" name="IsGiftPurchaced" value="True" checked />
+        </div>
+    }
+    else
+    {
     <div>
-        <label>Is Gift Purchaced?:</label> <input type="checkbox" name="IsGiftPurchaced" value="@Model.SelectedGift.IsGiftPurchaced" />
+        <label>Is Gift Purchaced?:</label> <input type="checkbox" name="IsGiftPurchaced" value="true" />
     </div>
+    }
     <div>
         <label>Whos it for : </label>
         <select name="RecipientId" id="RecipientId">

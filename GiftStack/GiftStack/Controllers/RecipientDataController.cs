@@ -76,38 +76,9 @@ namespace GiftStack.Controllers
 
             return Ok(recipientDtos);
         }
-
+        
         /// <summary>
-        /// Returns recipients in the system not reciving any gifts.
-        /// </summary>
-        /// <returns>
-        /// HEADER: 200 (OK)
-        /// CONTENT: all recpients in the database not reciving gifts
-        /// </returns>
-        /// <param name="id">gift Primary Key</param>
-        /// <example>
-        /// GET: /api/RecipientData/ListRecipientsNotRecivingGift/1
-        /// </example>
-        [HttpGet]
-        [ResponseType(typeof(RecipientDto))]
-        public IHttpActionResult ListRecipientsNotRecivingGift(int id)
-        {
-            List<Recipient> recipients = db.recipients.Where(
-                r => !r.Gifts.Any(
-                    g => g.GiftId == id)
-                ).ToList();
-            List<RecipientDto> recipientDtos = new List<RecipientDto>();
-
-            recipients.ForEach( r => recipientDtos.Add(new RecipientDto()
-            {
-                RecipientId = r.RecipientId,
-                RecipientName = r.RecipientName
-            }));
-
-            return Ok(recipientDtos);
-        }
-        /// <summary>
-        /// Returns all recipients in the system.
+        /// Returns a recipient in the system by a specific id.
         /// </summary>
         /// <returns>
         /// HEADER: 200 (OK)
@@ -153,12 +124,11 @@ namespace GiftStack.Controllers
         /// </returns>
         /// <example>
         /// POST: /api/RecipientData/UpdateRecipient/1
-        /// FORM DATA: Keeper JSON Object
+        /// FORM DATA: Recipient JSON Object
         /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateRecipient(int id, Recipient Recipient)
-            //TRY MAYBE DOING ADD AND DELETE FIRST?? IDK WHY THIS   ^^ IS NULL 
         {
             Debug.WriteLine("I have reached the update recipient method");
             if (!ModelState.IsValid)
@@ -259,27 +229,15 @@ namespace GiftStack.Controllers
 
             return Ok();
         }
-
-
-
-
-
-
-
-
-
-
-
+        /// <summary>
+        /// Returns a boolean indicating whether or not the recipient exists in the system.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool RecipientExists(int id)
         {
             return db.recipients.Count(e => e.RecipientId == id) > 0;
         }
-
-
-
-
-
-
 
     }
 }

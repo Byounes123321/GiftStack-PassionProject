@@ -68,7 +68,7 @@ namespace GiftStack.Controllers
             HttpClient apiClient2 = new HttpClient();
             apiClient2.BaseAddress = new Uri("https://localhost:44367/api/");
 
-            //i need to find the recipent who has this gift, and get the relitive recipeint id and find that recipent
+            // find the recipients associated with this gift
 
             int giftId = SelectedGift.GiftId;
 
@@ -84,7 +84,8 @@ namespace GiftStack.Controllers
             Debug.WriteLine(RelatedRecipent.Count());
 
 
-
+            //find events associated with this gift
+            
             string eveUrl = "EventData/ListEventForGift/" + giftId;
             HttpResponseMessage eveResponse = apiClient2.GetAsync(eveUrl).Result;
             
@@ -96,9 +97,10 @@ namespace GiftStack.Controllers
             Debug.WriteLine("Event recived");
             Debug.WriteLine(RelatedEvent.Count());
 
+            // add the related recipients and events to the view model
             DetailsGift viewModel = new DetailsGift();
-            viewModel.RelatedRecipient = (IEnumerable<RecipientDto>)RelatedRecipent;
-            viewModel.RelatedEvent = (IEnumerable<EventDto>)RelatedEvent;
+            viewModel.RelatedRecipient = RelatedRecipent;
+            viewModel.RelatedEvent = RelatedEvent;
             viewModel.SelectedGift = SelectedGift;
 
             return View(viewModel);
@@ -121,32 +123,23 @@ namespace GiftStack.Controllers
             
             HttpResponseMessage response = apiClient.GetAsync(url).Result;
 
-            //IEnumerable<giftDto> gifts = response.Content.ReadAsAsync<IEnumerable<giftDto>>().Result;
-
             IEnumerable<RecipientDto> recipientInfo = response.Content.ReadAsAsync<IEnumerable<RecipientDto>>().Result;
-            //string json = response.Content.ReadAsStringAsync().Result;
 
             //Debug.WriteLine("response:", json);
-
-            //RecipientDtoArrayResponse recipientResponse = JsonConvert.DeserializeObject<RecipientDtoArrayResponse>(json);
-            //IEnumerable<RecipientDto> recipients = recipientResponse.RecipientList;
 
             string url2 = "EventData/listEvents";
             HttpResponseMessage response2 = apiClient.GetAsync(url2).Result;
 
             IEnumerable< EventDto> eventInfo = response2.Content.ReadAsAsync<IEnumerable< EventDto>>().Result;
 
-            //string json2 = response2.Content.ReadAsStringAsync().Result;
-            //EventDtoResponse eventResponse = JsonConvert.DeserializeObject<EventDtoResponse>(json2);
-            //IEnumerable<EventDto> events = eventResponse.Events;
-
+            //add the information to the view model
             NewGift viewModel = new NewGift();
             viewModel.Recipients = recipientInfo;
             viewModel.Events = eventInfo;
             //Debug.WriteLine("number of recipients recived");
-           // Debug.WriteLine(recipient.Count());
+            //Debug.WriteLine(recipient.Count());
             //Debug.WriteLine("number of events recived");
-            //Debug.WriteLine(events.Count());
+            //Debug.WriteLine(events.Count());\
             Debug.WriteLine("viewmodel");
             Debug.WriteLine(viewModel);
             return View(viewModel);
@@ -161,8 +154,9 @@ namespace GiftStack.Controllers
             Debug.WriteLine("the inputed gift name is ");
             Debug.WriteLine(gift.GiftName);
             // add a new gift into the system using the api
+            
             string url = "AddGift";
-
+    
             string jsonPayload = jss.Serialize(gift);
 
             Debug.WriteLine("the Json payload is: ");
@@ -195,17 +189,19 @@ namespace GiftStack.Controllers
             HttpClient apiClient = new HttpClient();
             apiClient.BaseAddress = new Uri("https://localhost:44367/api/");
 
+            //find the recipients associated with this gift
+
             string RecUrl = "RecipientData/listRecipients";
             HttpResponseMessage RecResponse = apiClient.GetAsync(RecUrl).Result;
             IEnumerable<RecipientDto> recipientInfo = RecResponse.Content.ReadAsAsync<IEnumerable<RecipientDto>>().Result;
 
-
+            //find events associated with this gift
             string EveUrl = "EventData/listEvents";
             HttpResponseMessage response2 = apiClient.GetAsync(EveUrl).Result;
 
             IEnumerable<EventDto> eventInfo = response2.Content.ReadAsAsync<IEnumerable<EventDto>>().Result;
 
-
+            //add recipeints and events to viewmodel
             ViewModel.SelectedGift = SelectedGift;
             ViewModel.Event = eventInfo;
             ViewModel.Recipient = recipientInfo;
@@ -218,8 +214,9 @@ namespace GiftStack.Controllers
         [HttpPost]
         public ActionResult Update(int id, Gift gift)
         {
-            // EVENTID AND RECIPANTID ARE HARD CODED THE GIFT ID IS 5
-            //ADD UPDATE FUCTIONALITYS
+            Debug.WriteLine("the inputed gift name is ");
+            Debug.WriteLine(gift.GiftName);
+            
             string url = "updateGift/" + id;
             string jsonpayload = jss.Serialize(gift);
             Debug.WriteLine("Jason Data: ");

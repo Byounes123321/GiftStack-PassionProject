@@ -85,7 +85,7 @@ namespace GiftStack.Controllers
 
 
         /// <summary>
-        /// Returns all events in the system.
+        /// Returns one event in the system by id.
         /// </summary>
         /// <returns>
         /// HEADER: 200 (OK)
@@ -177,7 +177,17 @@ namespace GiftStack.Controllers
             Debug.WriteLine("none of the conditions triggerd");
             return StatusCode(HttpStatusCode.NoContent);
         }
-
+        /// <summary>
+        /// Adds an event to the system
+        /// </summary>
+        /// <param name="Event"></param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
         // POST: /api/EventData/AddEvent
         [ResponseType(typeof(Event))]
         [HttpPost]
@@ -194,7 +204,13 @@ namespace GiftStack.Controllers
             return CreatedAtRoute("DefaultApi", new { id = Event.EventId }, Event);
         }
 
-
+        /// <summary>
+        /// Deletes an event in the system by it's ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// </returns>
         // POST: api/EventData/DeleteEvent/5
         [Route("api/EventData/DeleteEvent/{id}")]
         [ResponseType(typeof(Event))]
