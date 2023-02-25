@@ -31,3 +31,339 @@ textarea {
 .page-title{
     font-size:36px;
 }
+
+a:link {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 36px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.add-btn {
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    padding:10px;
+}
+
+    .add-btn :hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+.add-a {
+    padding: 5px;
+    background-color: #1e6dc5;
+    color: black;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+}
+
+.list-ctn {
+    border-radius: 25px;
+    font-size: 5em;
+    background-color: #a19ef8;
+    color: white;
+    height: 2em;
+    line-height: 2;
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+    .list-ctn :hover {
+        border-radius: 25px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1.5);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+.li {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+p {
+    color: black;
+    font-size: 20px;
+    margin:0;
+}
+.giftname{
+    font-size:26px;
+    font-weight:bold;   
+}
+.giftLable {
+    margin:0;
+    padding:0;
+    color:black;
+
+}
+.giftRelated{
+    color:white;
+}
+
+
+.addForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.addLabel {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.textInput, .addSelect {
+    width: 300px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    background-color: #c9c8c8;
+}
+
+.checkInput {
+    margin-left: 5px;
+    margin-right: 10px;
+    align-self: center;
+}
+
+.submit-btn {
+    width: 150px;
+    height: 40px;
+    font-size: 18px;
+    background-color: #1e6dc5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    .submit-btn :hover {
+        background-color: #14549C;
+    }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .button {
+        background-color: #008CBA;
+        margin:10px;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+    .DelButton {
+        background-color: #ff0000;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        .button:hover {
+            background-color: #00688B;
+        }
+   .DelButton:hover {
+        background-color: #800000;
+        color:black;
+    }
+
+    .selected-gift {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .selected-gift h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .selected-gift span {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+    .gift-location {
+        margin-bottom: 20px;
+    }
+
+    .related-recipient,
+    .related-event,
+    .related-gifts{
+        margin-bottom: 20px;
+    }
+
+        .related-recipient a,
+        .related-event a {
+            background-color: #008CBA;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+            .related-recipient a:hover,
+            .related-event a:hover {
+                background-color: #00688B;
+            }
+.error-container {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.error-title {
+    font-size: 32px;
+    margin-top: 0;
+}
+
+.error-message {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.error-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: blue;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+    .error-button:hover {
+        background-color: lightblue;
+    }
+/* Wrapper for the page */
+.delete-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Title */
+.title {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Cancel button */
+.Delete-btn {
+    padding: 8px 16px;
+    background-color: red;
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease-in-out;
+    margin: auto;
+}
+
+    .Delete-btn:hover {
+        background-color: #6b0303;
+    }
+
+/* Gift name */
+.gift-name {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+/* Delete form */
+.delete-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Delete button */
+.cancel-btn {
+    padding: 12px 24px;
+    background-color: #e74c3c;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    .cancel-btn:hover {
+        background-color: #c0392b;
+    }
+
+.delContainer {
+    background-color: #e5d6d6;
+    width: fit-content;
+}
+.related-gifts a {
+    background-color: #008CBA;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+    .related-gifts a:hover {
+        background-color: #00688B;
+    }

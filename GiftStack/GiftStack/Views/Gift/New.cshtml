@@ -3,42 +3,44 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create Gift</h2>
-<form action="/gift/create" method="post">
-    <div>
-        <label>Name: </label> <input type="text" name="GiftName" />
-    </div>
-    <div>
-        <label>Location: </label> <input type="text" name="GiftLocation" />
-    </div>
-    <div>
-        <label>Is Gift Purchaced?: </label> <input type="checkbox" name="IsGiftPurchaced" value="True" />
-    </div>
-    <div>
-    </div>
-    <div>
-        <label>Whos it for : </label>
-        <select name="RecipientId" id="RecipientId">
 
+
+<h2>Add New Gift</h2>
+<form class="addForm" action="/gift/create" method="post">
+    <div>
+        <label class="addLable" for="GiftName">Name:</label>
+        <input class="textInput" type="text" id="GiftName" name="GiftName" required placeholder="Candy"/>
+    </div>
+    <div>
+        <label class="addLable" for="GiftLocation">Location:</label>
+        <input class="textInput"  type="text" id="GiftLocation" name="GiftLocation" required placeholder="https://www.amazon.ca/" title="Enter the store name or a valid link"/>
+    </div>
+    <div >
+ 
+            <label class="addLable"for="IsGiftPurchaced">Have You Purchased This Gift?</label> 
+  
+        
+        <input class="checkInput" type="checkbox" id="IsGiftPurchaced" name="IsGiftPurchaced" value="True" />
+    </div>
+    <div>
+        <label class="addLable" for="RecipientId">Who's it for:</label>
+        <select class="textInput" required  id="RecipientId" name="RecipientId">
             @foreach (var Recipient in Model.Recipients)
             {
                 <option value="@Recipient.RecipientId">@Recipient.RecipientName</option>
             }
-
         </select>
-
     </div>
     <div>
-        <label>what event is it for : </label>
-        <select name="EventId" id="EventId">
+        <label class="addLable" for="EventId">What event is it for:</label>
+        <select class="textInput" required  id="EventId" name="EventId">
             @foreach (var Event in Model.Events)
             {
                 <option value="@Event.EventId">@Event.EventName</option>
-            }
+            } 
         </select>
     </div>
     <div>
-        <input type="submit" value="Add Gift" />
-    </div>
+        <input class="submit-btn" type="submit" value="Add Gift" />
+    </div>  
 </form>
-

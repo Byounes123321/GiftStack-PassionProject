@@ -142,7 +142,8 @@ namespace GiftStack.Controllers
         public ActionResult Update(int id, Event Event)
         {
             //update an event in the system using the api
-
+            Debug.WriteLine("event date:");
+            Debug.WriteLine(Event.EventDate);
             string url = "updateEvent/" + id;
             string jsonpayload = jss.Serialize(Event);
             Debug.WriteLine("Jason Data: ");

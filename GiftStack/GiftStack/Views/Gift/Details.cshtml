@@ -2,35 +2,72 @@
 @{
     ViewBag.Title = "View";
 }
-<a href="/gift/list">Back to list</a>
-<a href="/gift/deleteConfirm/@Model.SelectedGift.GiftId">delete</a>
-<a href="/gift/edit/@Model.SelectedGift.GiftId">Edit</a>
 
-<h2>@Model.SelectedGift.GiftName</h2> 
-<span>Purchaced: @Model.SelectedGift.IsGiftPurchaced</span>
-<div>
-    @if (System.Uri.IsWellFormedUriString(Model.SelectedGift.GiftLocation, UriKind.Absolute))
+<div class="editButtons">
+    <a href="/gift/list" class="button">Back to list</a>
+
+</div>
+
+<div class="selected-gift">
+    <h2>@Model.SelectedGift.GiftName</h2>
+    @if (Model.SelectedGift.IsGiftPurchaced)
     {
-        <a href="@Model.SelectedGift.GiftLocation" target="_blank">View Gift</a>
+
+
+        <span>&#10003; This gift has already been purchased!</span>
+
+
+        <div class="gift-location">
+            @if (System.Uri.IsWellFormedUriString(Model.SelectedGift.GiftLocation, UriKind.Absolute))
+            {
+                <span>Gift was purchased from <a href="@Model.SelectedGift.GiftLocation" target="_blank">here.</a></span>
+            }
+            else
+            {
+                <span> Gift was purchased from @Model.SelectedGift.GiftLocation </span>
+            }
+        </div>
+
     }
     else
     {
-        <span> From: @Model.SelectedGift.GiftLocation </span>
+        <span>This gift has not been purchased yet!</span>
+
+
+        <div class="gift-location">
+            @if (System.Uri.IsWellFormedUriString(Model.SelectedGift.GiftLocation, UriKind.Absolute))
+            {
+                <span>Get your gift from <a href="@Model.SelectedGift.GiftLocation" target="_blank"><strong>here.</strong></a></span>
+            }
+            else
+            {
+                <span>You can get this gift from @Model.SelectedGift.GiftLocation </span>
+            }
+        </div>
     }
 
-</div>
-<div>
-    For: 
-    @foreach (var rec in Model.RelatedRecipient)
-    {
-        <a href="/recipient/details/@rec.RecipientId">@rec.RecipientName</a>
-    }
-</div>
-<div>
-    On: 
-    @foreach (var eve in Model.RelatedEvent)
-    {
-        <a href="/event/details/@eve.EventId" style="color:@eve.EventColor">@eve.EventName</a>
-    }
-</div>
+    <div class="related-recipient">
+        <span>
+            This gift is for
+            @foreach (var rec in Model.RelatedRecipient)
+            {
+                <a href="/recipient/details/@rec.RecipientId">@rec.RecipientName</a>
+            }
+        </span>
+    </div>
 
+    <div class="related-event">
+        <span>
+            To be given on
+            @foreach (var eve in Model.RelatedEvent)
+            {
+                <a href="/event/details/@eve.EventId">@eve.EventName</a>
+            }
+        </span>
+    </div>
+    <span>
+        <a href="/gift/deleteConfirm/@Model.SelectedGift.GiftId" class="DelButton">Delete</a>
+        <a href="/gift/edit/@Model.SelectedGift.GiftId" class="button">Edit</a>
+    </span>
+    
+</div>

@@ -4,12 +4,13 @@
 }
 
 <h2>Create Recipient</h2>
-<form action="/recipient/create" method="post">
+<form class="addForm" action="/recipient/create" method="post">
     <div>
-        <label>Name: </label> <input type="text" name="RecipientName" />
+        <label class="addLable" for="RecipientName">Name: </label>
+        <input class="textInput" type="text" name="RecipientName" placeholder="John doe" />
     </div>
     <div>
-        <input type="submit" value="Add Recipient" />
+        <input  class="submit-btn" type="submit" value="Add Recipient" />
     </div>
 </form>
 

@@ -8,21 +8,24 @@
     Update @Model.SelectedEvent.EventName
 </h2>
 
-<form action="/event/update/@Model.SelectedEvent.EventId" method="post">
+<form class="addForm" action="/event/update/@Model.SelectedEvent.EventId" method="post">
     <div style="display:none;">
         <input type="number" name="EventId" value="@Model.SelectedEvent.EventId" />
     </div>
     <div>
-        <label>Name:</label> <input type="text" name="EventName" value="@Model.SelectedEvent.EventName" />
+        <label class="addLable" for="EventName">Name:</label> 
+        <input class="textInput" type="text" name="EventName" value="@Model.SelectedEvent.EventName" />
     </div>
     <div>
-        <label>Date:</label> <input type="date" name="EventDate" value="@Model.SelectedEvent.EventDate.ToString("yyyy-MM-dd")" />
+        <label  class="addLable" for="EventDate">Date:</label> 
+        <input  class="textInput" type="date" name="EventDate" value="@Model.SelectedEvent.EventDate.ToString("yyyy-MM-dd")" />
     </div>
     <div>
-        <label>Colour:</label> <input type="color" name="EventColor" value="@Model.SelectedEvent.EventColor" />
+        <label class="addLable" for="EventColor" >Colour:</label> 
+        <input type="color" name="EventColor" value="@Model.SelectedEvent.EventColor" />
     </div>
     <div>
-        <input type="submit" value="Update Event" />
+        <input class="submit-btn" type="submit" value="Update Event" />
 
     </div>
 </form>

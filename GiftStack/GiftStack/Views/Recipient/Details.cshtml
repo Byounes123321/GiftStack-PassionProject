@@ -2,25 +2,33 @@
 @{
     ViewBag.Title = "View";
 }
-<a href="/recipient/list">Back to list</a>
-<a href="/recipient/deleteConfirm/@Model.SelectedRecipient.RecipientId">delete</a>
-<a href="/recipient/edit/@Model.SelectedRecipient.RecipientId">Edit</a>
 
+<div class="editButtons">
+    <a href="/recipient/list" class="button">Back to list</a>
 
+</div>
 
-<h3>Name: @Model.SelectedRecipient.RecipientName</h3>
-
-<div>ID: @Model.SelectedRecipient.RecipientId</div>
-<div>
-    <ul>
-    Gifts for @Model.SelectedRecipient.RecipientName
-    @foreach(var gift in Model.GiftsRecived)
+<div class="selected-gift">
+    <h2>@Model.SelectedRecipient.RecipientName</h2>
+  
+    <div class="related-gifts">
+        
+            <h3>Gifts for @Model.SelectedRecipient.RecipientName:</h3>
+            @foreach (var gift in Model.GiftsRecived)
             {
-                <li>
-                    <a href="/gift/details/@gift.GiftId">@gift.GiftName</a> for @gift.EventName
-                </li>
+                <span>
+                    <a  href="/gift/details/@gift.GiftId">@gift.GiftName</a> for @gift.EventName <br /> <br />
+                </span>
+             
             }
-        </ul>
+       
+    </div>
+
+    <span>
+        <a href="/recipient/deleteConfirm/ @Model.SelectedRecipient.RecipientId" class="DelButton">Delete</a>
+        <a href="/recipient/edit/ @Model.SelectedRecipient.RecipientId" class="button">Edit</a>
+    </span>
+
 </div>
 
 

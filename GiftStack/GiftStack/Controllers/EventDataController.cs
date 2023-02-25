@@ -144,7 +144,12 @@ namespace GiftStack.Controllers
                 Debug.WriteLine("Modle State is invalid");
                 return BadRequest(ModelState);
             }
-            Debug.WriteLine("EVENT DATA: ", Event.EventColor);
+            Debug.WriteLine("EVENT DATA: ");
+            Debug.WriteLine(Event.EventColor);
+            Debug.WriteLine("EVENT DateTime: ");
+            Debug.WriteLine(Event.EventDate);
+
+
 
             if (id != Event.EventId)
             {

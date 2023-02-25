@@ -4,12 +4,23 @@
     ViewBag.Title = "DeleteConfirm";
 }
 
-<h2>Are you sure you want to delete @Model.RecipientName?</h2>
 
-<a href="/recipient/List">Cancel</a>
+<body class="delete-page">
+    <p style="margin-top:10px">
+        <a href="/recipient/details/@Model.RecipientId" class="add-a">
+            Cancel
+        </a>
+    </p>
+    <h2>Are you sure you want to remove this 
+    recipient?</h2>
 
-<h2>@Model.RecipientName</h2>
+    <h2>@Model.RecipientName</h2>
 
-<form action="/recipient/delete/@Model.RecipientId" method="post">
-    <input type="submit" value="Confirm Delete" />
-</form>
+
+
+
+    <form style="display:flex;" action="/recipient/delete/@Model.RecipientId" method="post">
+        <input class="Delete-btn" type="submit" value="Confirm Delete" />
+    </form>
+
+</body>

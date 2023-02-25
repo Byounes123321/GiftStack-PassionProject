@@ -152,7 +152,10 @@ namespace GiftStack.Controllers
                 return RedirectToAction("Error");
             }
         }
-
+        public ActionResult Error()
+        {
+            return View();
+        }
 
         // GET: RecipientData/Delete/5
         public ActionResult DeleteConfirm(int id)

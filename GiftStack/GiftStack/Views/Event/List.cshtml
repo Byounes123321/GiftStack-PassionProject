@@ -2,13 +2,25 @@
 @{
     ViewBag.Title = "List";
 }
-<h2>List</h2>
-<h3><a href="/event/new">Add new event</a></h3>
+<h2>Your Events</h2>
+<p class="add-btn">
+    <a href="/event/new" class="add-a">&plus; Add New Event</a>
+</p>
+<div class="gridContainer">
+    @foreach (var Event in Model)
+    {
 
-@foreach (var Event in Model)
-{
-   
-        <h2>
-    <a href="/event/details/@Event.EventId" style="color: @Event.EventColor">@Event.EventName</a></h2>
-    
-}
+            <div style="background-color: @Event.EventColor " class="list-ctn">
+                <div class="content">
+                    <h3 class="giftname">@Event.EventName </h3>
+                    <p>@Event.EventDate.ToString("D")</p>
+                  
+
+
+                </div>
+                <a href="/event/details/@Event.EventId">
+                    <span class="li"></span>
+                </a>
+            </div>
+    }
+</div>

@@ -64,6 +64,7 @@ namespace GiftStack.Controllers
             Debug.WriteLine("gift recived");
             Debug.WriteLine(SelectedGift.GiftName);
 
+           
             //Show events and recipients that are associated with this gift
             HttpClient apiClient2 = new HttpClient();
             apiClient2.BaseAddress = new Uri("https://localhost:44367/api/");
@@ -99,6 +100,7 @@ namespace GiftStack.Controllers
 
             // add the related recipients and events to the view model
             DetailsGift viewModel = new DetailsGift();
+   
             viewModel.RelatedRecipient = RelatedRecipent;
             viewModel.RelatedEvent = RelatedEvent;
             viewModel.SelectedGift = SelectedGift;

@@ -4,12 +4,23 @@
     ViewBag.Title = "DeleteConfirm";
 }
 
-<h2>Are you sure you want to delete @Model.EventName?</h2>
+<body class="delete-page">
+    <p style="margin-top:10px">
+        <a href="/event/details/@Model.EventId" class="add-a">
+            Cancel
+        </a>
+    </p>
+    <h2>Are you sure you want to remove this Event?</h2>
+    <h2>All gifts associated with this event will be deleted as well</h2>
 
-<a href="/event/List">Cancel</a>
 
-<h2>@Model.EventName</h2>
 
-<form action="/event/delete/@Model.EventId" method="post">
-    <input type="submit" value="Confirm Delete" />
-</form>
+    <h2>@Model.EventName</h2>
+    
+
+
+    <form style="display:flex;" action="/event/delete/@Model.EventId" method="post">
+        <input class="Delete-btn" type="submit" value="Confirm Delete" />
+    </form>
+
+</body>
